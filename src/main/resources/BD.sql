@@ -3,28 +3,28 @@ CREATE DATABASE apiHoteles;
 USE apiHoteles;
 
 CREATE TABLE hotel (
-                         id INT AUTO_INCREMENT PRIMARY KEY,
-                         nombre VARCHAR(255) NOT NULL,
-                         descripcion VARCHAR(255) NOT NULL,
-                         categoria VARCHAR(255) NOT NULL,
-                         piscina BOOLEAN,
-                         localidad VARCHAR(255) NOT NULL
+                       id INT AUTO_INCREMENT PRIMARY KEY,
+                       nombre VARCHAR(255) NOT NULL,
+                       descripcion VARCHAR(255) NOT NULL,
+                       categoria VARCHAR(255) NOT NULL,
+                       piscina BOOLEAN,
+                       localidad VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE habitacion (
-                              id INT AUTO_INCREMENT PRIMARY KEY,
-                              tamanio INT NOT NULL,
-                              precio INT NOT NULL,
-                              desayuno BOOLEAN default false,
-                              ocupada BOOLEAN default false,
-                              id_hotel INT NOT NULL,
-                              FOREIGN KEY (id_hotel) REFERENCES hotel(id) ON DELETE CASCADE
+                            id INT AUTO_INCREMENT PRIMARY KEY,
+                            tamanio INT NOT NULL,
+                            precio INT NOT NULL,
+                            desayuno BOOLEAN default false,
+                            ocupada BOOLEAN default false,
+                            id_hotel INT NOT NULL,
+                            FOREIGN KEY (id_hotel) REFERENCES hotel(id) ON DELETE CASCADE
 );
 
 CREATE TABLE user (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user VARCHAR(255) NOT NULL,
-    pwd VARCHAR(255) NOT NULL
+                      id INT AUTO_INCREMENT PRIMARY KEY,
+                      user VARCHAR(255) NOT NULL,
+                      pwd VARCHAR(255) NOT NULL
 );
 
 
@@ -40,4 +40,6 @@ INSERT INTO habitacion VALUES
                            (3, 2, 500, TRUE, TRUE, 2),
                            (4, 1, 300, FALSE, FALSE, 1);
 
-INSERT INTO user  VALUES (1, 'juan', 'juan'), (2, 'isaac', 'isaac')
+INSERT INTO user  VALUES (1, 'juan', 'juan'), (2, 'isaac', 'isaac');
+
+ALTER TABLE user ADD COLUMN token VARCHAR(255);
