@@ -33,6 +33,7 @@ public class UserController {
     }
 
 
+    //ruta para obtener el token de usuarioy poder acceder a otras rutas que lo necesiten
     @PostMapping("/usuario")
     public User login(@RequestParam("usuario") String nombreUsuario, @RequestParam("contrasena") String password) {
         // Buscar al usuario por nombre de usuario

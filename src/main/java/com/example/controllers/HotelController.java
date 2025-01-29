@@ -27,6 +27,8 @@ public class HotelController {
         this.hotelService = hotelService;
     }
 
+
+    //ruta para listar todas los hoteles
     @GetMapping("/hoteles")
     @Operation(summary = "Obtener todos los hoteles", description = "Obtiene una lista de todos los hoteles")
     @ApiResponses(value = {
@@ -42,6 +44,8 @@ public class HotelController {
         }
     }
 
+
+    //ruta para buscar un hotel por localidad
     @GetMapping("/hotel/localidad/{localidad}")
     @Operation(summary = "Obtener hotel por localidad", description = "Obtiene un hotel por su localidad")
     @ApiResponses(value = {
@@ -57,6 +61,8 @@ public class HotelController {
         }
     }
 
+
+    //ruta para buscar un hotel por categoria
     @GetMapping("/hotel/categoria/{categoria}")
     @Operation(summary = "Obtener hotel por categoria", description = "Obtiene un hotel por su categoria")
     @ApiResponses(value = {
@@ -74,6 +80,7 @@ public class HotelController {
     }
 
 
+    //ruta para guardar un nuevo hotel
     @PostMapping("saveHotel")
     @Operation(summary = "Guardar un nuevo hotel", description = "Guarda un nuevo hotel en la base de datos")
     @ApiResponses(value = {

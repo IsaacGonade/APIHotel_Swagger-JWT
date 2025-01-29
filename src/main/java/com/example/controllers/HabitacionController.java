@@ -6,7 +6,6 @@ import com.example.entities.Hotel;
 import com.example.services.HabitacionService;
 import com.example.services.HotelService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -33,6 +32,8 @@ public class HabitacionController {
         this.hotelService = hotelService;
     }
 
+
+    //ruta para listar todas las habitaciones
     @GetMapping("/habitaciones")
     @Operation(summary = "Obtener todos las habitaciones", description = "Obtiene una lista de todos las habitaciones")
     @ApiResponses(value = {
@@ -48,6 +49,7 @@ public class HabitacionController {
         }
     }
 
+    //ruta para buscar habitaciones en un rango de capacidad y precio
     @GetMapping("/habitaciones/buscar")
     @Operation(summary = "Obtener todas las habitaciones por un rango", description = "Obtiene una lista de todos las habitaciones")
     public List<Habitacion> buscarHabitaciones(@RequestParam int tamanio, @RequestParam int precioMin, @RequestParam int precioMax) {
@@ -55,6 +57,8 @@ public class HabitacionController {
         return habitacionService.findByTamanioAndPrecio(tamanio, precioMin, precioMax);
     }
 
+
+    //ruta para guardar una nueva habitacion
     @PostMapping("/hotel/{id_hotel}/saveHabitacion")
     @Operation(summary = "Crear una nueva habitacion en un hotel")
     /*{
@@ -83,6 +87,8 @@ public class HabitacionController {
         }
     }
 
+
+    //ruta para borrar una habitacion
     @DeleteMapping("/habitaciones/borrar/{id_habitacion}")
     @Operation(summary = "Borrar una habitación")
     public ResponseEntity<?> deleteHabitacion(@PathVariable int id_habitacion){
@@ -91,6 +97,8 @@ public class HabitacionController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+
+    //ruta para modificar el esatdo de ocupacion de una habitacion
     @PutMapping("/habitaciones/editar/{id_habitacion}")
     @Operation(summary = "Modificar ocupación de una habitación")
     public ResponseEntity<?> updateHabitacion(@PathVariable int id_habitacion){

@@ -22,7 +22,7 @@ public class App {
 	@EnableWebSecurity
 	@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 	class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-		// lista de rutas a las que se puede acceder sin autorizacion
+		// lista de rutas a las que se puede acceder sin necesidad de autorizacion
 		private static final String[] AUTH_WHITELIST = {
 				"/v2/api-docs",
 				"/swagger-resources",
